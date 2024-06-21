@@ -1,0 +1,33 @@
+#!make
+-include envfile
+-include envfile-local
+
+DOTFILES ?= ~/myconf/dotfiles
+MYOS ?= `cat /tmp/env-os`
+USER ?= `cat /tmp/env-user`
+
+checkhealth_debian:
+	apt-get --version
+
+install:
+	cat $(DOTFILES)/pacman/aptfile-raspbian.txt |xargs sudo apt-get install -y
+	#sudo apt-get install fortune cowsay cmatrix -y
+
+
+clean_debian:
+	sudo apt-get autoremove -y
+	sudo apt-get autoclean -y
+
+
+install_printer_debian: checkhealth_debian
+	sudo apt-get install cups -y
+	sudo usermod -aG lpadmin ${USER}
+	sudo cupsctl --remote-any # Process to this url to manage printers:
+	# https://ServerIP:631/
+
+install_scanner_debian:
+	sudo apt install sane -y
+	# List all Scan devices with Names
+	scanimage -L
+	# Scan an image
+	# scanimage -d "DeviceName" –-format=tiff > sample.tiff
