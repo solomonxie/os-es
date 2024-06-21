@@ -1,0 +1,15 @@
+#!make
+-include envfile
+-include envfile-local
+
+DOTFILES ?= ~/myconf/dotfiles
+MYOS ?= `cat /tmp/env-os`
+USER ?= `cat /tmp/env-user`
+
+
+checkhealth_debian:
+	apk --version
+
+install:
+	apk update
+	apk add curl wget unzip
