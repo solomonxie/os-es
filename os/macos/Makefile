@@ -6,17 +6,18 @@ DOTFILES ?= ~/myconf/dotfiles
 MYOS ?= `cat /tmp/env-os`
 USER ?= `cat /tmp/env-user`
 
-install-brew:
-	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+install-homebrew:
+	command -v brew >/dev/null 2>&1 || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	brew update
+	brew tap Homebrew/bundle
 
 
-install-software: install-brew
-	brew bundle
-	brew bundle install --file $(DOTFILES)/pacman/Brewfile
+install-softwares: install-homebrew
+	brew bundle install --file ./Brewfile
+	brew bundle dump --file=./Brewfile
 
 
-change_source_brew:
+homebrew-change-source:
 	# brew.git:
 	cd "$(brew --repo)"
 	git remote set-url origin https://github.com/Homebrew/brew.git
