@@ -131,6 +131,10 @@ disable=R,
         zip-builtin-not-iterating,
         broad-except,
         logging-fstring-interpolation,
+        logging-format-interpolation,
+        missing-class-docstring,
+        missing-module-docstring,
+        raise-missing-from,
 
 
 [REPORTS]
