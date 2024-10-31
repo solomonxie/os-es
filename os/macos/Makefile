@@ -34,7 +34,7 @@ homebrew-change-source:
 
 launchd-st-db-tunnle:
 	yes| cp ./os/macos/launchd_st_tsh_db_tunnel.plist.xml ~/Library/LaunchAgents/launchd_st_tsh_db_tunnel.plist |cat
-	launchctl unload ~/Library/LaunchAgents/launchd_st_tsh_db_tunnel.plist > /dev/null 2>&1
+	launchctl unload ~/Library/LaunchAgents/launchd_st_tsh_db_tunnel.plist |cat
 	launchctl load ~/Library/LaunchAgents/launchd_st_tsh_db_tunnel.plist
 	launchctl list | grep st_tsh_db_tunnel
 	@echo OK.
