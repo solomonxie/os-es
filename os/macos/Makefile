@@ -33,8 +33,8 @@ homebrew-change-source:
 	# git remote set-url origin https://github.com/Homebrew/homebrew-core.git
 
 launchd-st-db-tunnle:
-	yes| cp ./os/macos/launchd_st_tsh_db_tunnel.plist.xml ~/Library/LaunchAgents/launchd_st_tsh_db_tunnel.plist |cat
-	launchctl unload ~/Library/LaunchAgents/launchd_st_tsh_db_tunnel.plist |cat
+	yes| cp ./os/macos/launchd_st_tsh_db_tunnel.plist.xml ~/Library/LaunchAgents/launchd_st_tsh_db_tunnel.plist
+	launchctl unload ~/Library/LaunchAgents/launchd_st_tsh_db_tunnel.plist
 	launchctl load ~/Library/LaunchAgents/launchd_st_tsh_db_tunnel.plist
 	launchctl list | grep st_tsh_db_tunnel
 	@echo OK.
