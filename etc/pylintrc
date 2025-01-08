@@ -134,6 +134,7 @@ disable=R,
         logging-format-interpolation,
         missing-class-docstring,
         missing-module-docstring,
+        unspecified-encoding,
 
 
 [REPORTS]
