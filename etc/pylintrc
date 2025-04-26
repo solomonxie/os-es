@@ -135,6 +135,7 @@ disable=R,
         missing-class-docstring,
         missing-module-docstring,
         unspecified-encoding,
+        consider-using-f-string,
 
 
 [REPORTS]
