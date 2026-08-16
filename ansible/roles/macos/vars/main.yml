@@ -1,0 +1,54 @@
+# Centralize package names and application lists here.
+# Get ideas from: brew list --formula; brew list --cask
+---
+homebrew_taps:
+  - homebrew/cask
+
+homebrew_packages:
+  - vim
+  - tmux
+  - zsh
+  - git
+  - wget
+  - ansible
+  - awscli
+  - htop
+  - lua
+  - lua-language-server
+  - reattach-to-user-namespace
+  - ripgrep
+  - telnet
+  - coreutils
+  - mactop
+  - ruby
+  - cmake
+  - sqlite
+  - fd
+  - duckdb
+  - tig
+  - ffmpeg
+  - tree
+  - ncdu
+  - ollama
+  - fzf
+  - gnu-sed
+  - gnu-tar
+  - virtualenv
+  - python@3.12
+  - python@3.13
+  - python@3.14
+  - mas # Required to install Mac App Store apps via CLI
+
+homebrew_cask_packages:
+  - visual-studio-code
+  - iterm2
+  - claude-code
+  - caffeine
+  - alfred
+  - iina
+  - baidu-netdisk
+
+mas_apps:
+  - { name: "Microsoft OneNote", id: 410395246 }
+  - { name: "WeChat", id: 836500024 }
+  - { name: "Xnip", id: 1221250572 }

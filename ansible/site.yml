@@ -1,0 +1,6 @@
+# The entry point playbook applying `macos` role to localhost
+---
+- name: Configure macOS
+  hosts: localhost
+  roles:
+    - macos
