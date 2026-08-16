@@ -1,0 +1,10 @@
+# Neovim Required:
+#neovim
+#pynvim
+#python-lsp-server[all]
+#pycodestyle
+#python-language-server
+#pyright  # requires npm install neovim typescript
+#flake8==3.9.2  # 4.0 no longer respect user config file
+#pyls-flake8  # flake8 that respects config file
+#jedi-language-server

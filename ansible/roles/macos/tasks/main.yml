@@ -24,37 +24,6 @@
   loop: "{{ mas_apps }}"
 
 
-- name: Create symlinks for dotfiles
-  ansible.builtin.file:
-    src: "{{ ansible_facts.env.HOME }}/{{ item.src }}"
-    dest: "{{ ansible_facts.env.HOME }}/{{ item.dest }}"
-    state: link
-    force: yes
-  loop:
-    - { src: 'myconf/config', dest: '.config' }
-    - { src: 'myconf/ssh', dest: '.ssh' }
-    - { src: 'myconf/dotfiles/etc/tigrc', dest: '.tigrc' }
-    - { src: 'myconf/dotfiles/tmux/tmux.conf', dest: '.tmux.conf' }
-    - { src: 'myconf/dotfiles/zsh/zshrc-mac.zsh', dest: '.zshrc' }
-
-- name: Touch files
-  ansible.builtin.file:
-    path: "{{ ansible_facts.env.HOME }}/{{ item }}"
-    state: touch
-    mode: '0644'
-  loop:
-    - ".vimrc-env.vim"
-    - ".vimrc-local.vim"
-    - ".global.env"
-
-- name: Copy files
-  ansible.builtin.copy:
-    src: "{{ ansible_facts.env.HOME }}/{{ item.src }}"
-    dest: "{{ ansible_facts.env.HOME }}/{{ item.dest }}"
-    mode: '0644'
-  loop:
-    - { src: 'myconf/dotfiles/etc/git/gitconfig-init.ini', dest: '.gitconfig' }
-
 # - name: Set macOS system defaults (e.g., show hidden files in Finder)
 #   community.general.osx_defaults:
 #     domain: com.apple.finder
@@ -72,28 +41,9 @@
 #     state: present
 #   notify: Restart Dock
 
+# Modular includes
+- name: Run Programming Languages setup (Python, nodejs...)
+  ansible.builtin.include_tasks: languages.yml
 
----
-
-# Python virtual environment
-- name: Create Python 3.12 virtual environment
-  ansible.builtin.pip:
-    name: []
-    virtualenv: "{{ ansible_facts.env.HOME }}/virtualenv/venv"
-    virtualenv_command: "virtualenv -p python3.12"
-
-# Node.js and virtual environments idempotently
-- name: Install nodeenv via pip
-  ansible.builtin.pip:
-    name: nodeenv
-    state: present
-- name: Create Node.js virtual environments
-  ansible.builtin.command:
-    cmd: "nodeenv {{ item.flag }} {{ ansible_facts.env.HOME }}/virtualnode/{{ item.name }}"
-    creates: "{{ ansible_facts.env.HOME }}/virtualnode/{{ item.name }}/bin/node"
-  loop:
-    - { name: 'venv10', flag: '--node=10.17.0' }
-    - { name: 'venv13', flag: '--node=13.14.0' }
-    - { name: 'venv20', flag: '--node=20.12.0' }
-    - { name: 'venv22', flag: '--node=22.11.0' }
-    - { name: 'venv', flag: '' }  # use latest
+- name: Run Vim, Zsh, and Tmux setup
+  ansible.builtin.include_tasks: shell_tools.yml

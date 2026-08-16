@@ -11,6 +11,7 @@ homebrew_packages:
   - git
   - wget
   - ansible
+  - terraform
   - awscli
   - htop
   - lua
