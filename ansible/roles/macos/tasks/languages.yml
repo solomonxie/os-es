@@ -2,7 +2,7 @@
 
 # Python virtual environment
 - name: Install nodeenv/virtualenv via pip
-  ansible.builtin.pip:
+  community.general.homebrew:
     name:
       - virtualenv
       - nodeenv
@@ -12,7 +12,7 @@
   ansible.builtin.pip:
     name: []
     virtualenv: "{{ ansible_facts.env.HOME }}/virtualenv/venv"
-    virtualenv_command: "virtualenv -p python3.12"
+    virtualenv_command: "virtualenv -p python3.14"
 
 
 # Node.js and virtual environments idempotently
