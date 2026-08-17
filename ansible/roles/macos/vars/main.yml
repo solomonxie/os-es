@@ -44,6 +44,7 @@ homebrew_cask_packages:
   - visual-studio-code
   - iterm2
   - claude-code
+  - antigravity-cli
   - caffeine
   - alfred
   - iina

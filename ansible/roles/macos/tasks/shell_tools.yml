@@ -21,6 +21,8 @@
     - { src: 'myconf/ssh', dest: '.ssh' }
     - { src: 'myconf/config', dest: '.config' }
     - { src: 'myconf/dotfiles/etc/tigrc', dest: '.tigrc' }
+    - { src: 'myconf/config/claude/settings.json', dest: '.claude/settings.json' }
+    - { src: 'myconf/config/claude/CLAUDE.md', dest: '.claude/CLAUDE.md' }
 
 - name: Touch files
   ansible.builtin.file:
