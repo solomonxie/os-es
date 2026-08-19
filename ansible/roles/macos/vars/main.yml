@@ -42,7 +42,11 @@ homebrew_packages:
 
 homebrew_cask_packages:
   - visual-studio-code
+  - sublime-text
   - iterm2
+  - google-chrome
+  - zoom
+  - microsoft-teams
   - claude-code
   - antigravity-cli
   - caffeine
@@ -51,6 +55,7 @@ homebrew_cask_packages:
   - baidu-netdisk
 
 mas_apps:
+  - { name: "Xcode", id: 497799835 }
   - { name: "Microsoft OneNote", id: 410395246 }
   - { name: "WeChat", id: 836500024 }
   - { name: "Xnip", id: 1221250572 }
