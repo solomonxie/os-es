@@ -27,7 +27,8 @@
     - { src: 'myconf/dotfiles/ai/claude/skills', dest: '.claude/skills' }
     - { src: 'myconf/dotfiles/ai/openai', dest: 'myconf/config/openai' }
     - { src: 'myconf/dotfiles/ai/openai/AGENTS.md', dest: '.codex/AGENTS.md' }
-    - { src: 'myconf/dotfiles/ai/openai/config.toml', dest: '.codex/config.toml' }
+    # config.toml is NOT symlinked/tracked: it's too sensitive for git, kept as a
+    # plain file at ~/.codex/config.toml managed outside this repo.
 
 - name: Link Codex user skills without replacing system-managed skills
   ansible.builtin.file:
