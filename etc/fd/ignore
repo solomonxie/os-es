@@ -1,0 +1,5 @@
+# Global fd ignore list (~/.config/fd/ignore) — gitignore-style patterns.
+# Applies even with --hidden, so .git stays out of dotfile searches.
+# Regular .gitignore patterns are still respected separately per-repo.
+.git/
+venv/
