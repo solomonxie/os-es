@@ -47,3 +47,6 @@
 
 - name: Run Vim, Zsh, and Tmux setup
   ansible.builtin.include_tasks: shell_tools.yml
+
+- name: Run iTerm2 profile setup
+  ansible.builtin.include_tasks: iterm2.yml

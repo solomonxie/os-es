@@ -1,0 +1,19 @@
+---
+- name: Ensure iTerm2 DynamicProfiles directory exists
+  ansible.builtin.file:
+    path: "{{ ansible_facts.env.HOME }}/Library/Application Support/iTerm2/DynamicProfiles"
+    state: directory
+    mode: '0755'
+
+- name: Symlink iTerm2 dynamic profile
+  ansible.builtin.file:
+    src: "{{ ansible_facts.env.HOME }}/myconf/dotfiles/os/macos/iterm2-profile.json"
+    dest: "{{ ansible_facts.env.HOME }}/Library/Application Support/iTerm2/DynamicProfiles/iterm2-profile.json"
+    state: link
+    force: yes
+
+- name: Install Nerd Font used by iTerm2 profile
+  ansible.builtin.get_url:
+    url: https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/DroidSansMono/DroidSansMNerdFont-Regular.otf
+    dest: "{{ ansible_facts.env.HOME }}/Library/Fonts/DroidSansMNerdFont-Regular.otf"
+    mode: '0644'
