@@ -3,3 +3,35 @@
 # Regular .gitignore patterns are still respected separately per-repo.
 .git/
 venv/
+.venv/
+node_modules/
+
+# lockfiles — tracked, huge, never what you meant to jump to
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+Cargo.lock
+Gemfile.lock
+poetry.lock
+Pipfile.lock
+composer.lock
+
+# minified/generated, not hand-edited
+*.min.js
+*.min.css
+*.map
+
+# binary/media — not text-searchable in an editor
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.ico
+*.pdf
+*.woff
+*.woff2
+*.ttf
+*.otf
+*.zip
+
+.DS_Store
