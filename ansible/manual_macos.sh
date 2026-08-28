@@ -42,6 +42,8 @@ ln -sf ~/myconf/dotfiles/ai/claude/skills ~/.claude/skills
 ln -sf ~/myconf/dotfiles/ai/openai ~/myconf/config/openai
 ln -sf ~/myconf/dotfiles/ai/openai/AGENTS.md ~/.codex/AGENTS.md
 ln -sf ~/myconf/dotfiles/etc/fd ~/myconf/config/fd
+mkdir -p ~/Library/Preferences/clangd
+ln -sf ~/myconf/dotfiles/os/macos/clangd-config.yaml ~/Library/Preferences/clangd/config.yaml
 ln -sf ~/myconf/dotfiles/ai/openai/skills/ansible ~/.codex/skills/ansible
 ln -sf ~/myconf/dotfiles/ai/openai/skills/grillme ~/.codex/skills/grillme
 ln -sf ~/myconf/dotfiles/ai/openai/skills/terraform ~/.codex/skills/terraform
