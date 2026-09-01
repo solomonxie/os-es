@@ -28,8 +28,17 @@ pip install nodeenv
 nodeenv ~/virtualnode/venv
 ~/virtualenv/venv/bin/pip install -r ansible/roles/macos/tasks/requirements_py.txt
 
+# tasks/neovim.yml: Neovim release (not Homebrew), version must match zsh/zshrc-mac.zsh PATH
+NVIM_VERSION=0.11.2
+NVIM_ARCH=arm64  # or x86_64 on Intel Macs
+curl -Lo /tmp/nvim-macos-$NVIM_VERSION.tar.gz \
+  https://github.com/neovim/neovim/releases/download/v$NVIM_VERSION/nvim-macos-$NVIM_ARCH.tar.gz
+tar -xzf /tmp/nvim-macos-$NVIM_VERSION.tar.gz -C /tmp
+mv /tmp/nvim-macos-$NVIM_ARCH ~/nvim-macos-$NVIM_VERSION
+xattr -r -d com.apple.quarantine ~/nvim-macos-$NVIM_VERSION
+
 # tasks/shell_tools.yml: shell packages + dotfile symlinks
-brew install neovim zsh tmux
+brew install zsh tmux
 ln -sf ~/myconf/dotfiles/zsh/zshrc-mac.zsh ~/.zshrc
 ln -sf ~/myconf/dotfiles/tmux/tmux.conf ~/.tmux.conf
 ln -sf ~/myconf/ssh ~/.ssh

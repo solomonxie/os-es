@@ -2,10 +2,10 @@
 - name: Install Vim, Zsh, and Tmux packages
   community.general.homebrew:
     name:
-      - neovim
       - zsh
       - tmux
     state: present
+  # Neovim itself is installed by neovim.yml (GitHub release, not Homebrew).
 
 - name: Create symlinks for dotfiles
   ansible.builtin.file:

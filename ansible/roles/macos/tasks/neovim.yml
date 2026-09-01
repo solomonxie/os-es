@@ -1,0 +1,33 @@
+---
+# Neovim is installed manually from the GitHub release (not Homebrew) so multiple
+# versions can coexist side by side, matching the PATH entries in zsh/zshrc-mac.zsh.
+
+- name: Check if Neovim {{ neovim_version }} is already installed
+  ansible.builtin.stat:
+    path: "{{ ansible_facts.env.HOME }}/nvim-macos-{{ neovim_version }}/bin/nvim"
+  register: neovim_installed
+
+- name: Download Neovim {{ neovim_version }} release archive
+  ansible.builtin.get_url:
+    url: "https://github.com/neovim/neovim/releases/download/v{{ neovim_version }}/nvim-macos-{{ neovim_arch }}.tar.gz"
+    dest: "/tmp/nvim-macos-{{ neovim_version }}.tar.gz"
+  when: not neovim_installed.stat.exists
+
+- name: Extract Neovim {{ neovim_version }} release archive
+  ansible.builtin.unarchive:
+    src: "/tmp/nvim-macos-{{ neovim_version }}.tar.gz"
+    dest: "/tmp"
+    remote_src: yes
+  when: not neovim_installed.stat.exists
+
+- name: Move extracted Neovim into versioned install dir
+  ansible.builtin.command:
+    cmd: "mv /tmp/nvim-macos-{{ neovim_arch }} {{ ansible_facts.env.HOME }}/nvim-macos-{{ neovim_version }}"
+  when: not neovim_installed.stat.exists
+
+- name: Remove macOS quarantine attribute from Neovim (otherwise Gatekeeper blocks it)
+  ansible.builtin.command:
+    cmd: "xattr -r -d com.apple.quarantine {{ ansible_facts.env.HOME }}/nvim-macos-{{ neovim_version }}"
+  when: not neovim_installed.stat.exists
+  changed_when: true
+  failed_when: false

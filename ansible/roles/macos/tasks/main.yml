@@ -45,6 +45,9 @@
 - name: Run Programming Languages setup (Python, nodejs...)
   ansible.builtin.include_tasks: languages.yml
 
+- name: Run Neovim release install
+  ansible.builtin.include_tasks: neovim.yml
+
 - name: Run Vim, Zsh, and Tmux setup
   ansible.builtin.include_tasks: shell_tools.yml
 

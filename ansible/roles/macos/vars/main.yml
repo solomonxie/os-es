@@ -59,3 +59,9 @@ mas_apps:
   - { name: "Microsoft OneNote", id: 410395246 }
   - { name: "WeChat", id: 836500024 }
   - { name: "Xnip", id: 1221250572 }
+
+# Neovim is NOT installed via Homebrew: it's downloaded from the GitHub release
+# so it matches the version zsh/zshrc-mac.zsh puts first on PATH. Bump both
+# together when upgrading.
+neovim_version: "0.11.2"
+neovim_arch: "{{ 'arm64' if ansible_facts.architecture == 'arm64' else 'x86_64' }}"
