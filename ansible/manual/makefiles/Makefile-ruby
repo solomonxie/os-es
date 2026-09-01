@@ -1,0 +1,8 @@
+
+
+
+install:
+	brew install rbenv ruby-build
+	rbenv install 2.7.6
+	rbenv install 3.3.0
+	echo export PATH="$HOME/.rbenv/versions/2.7.6/bin:$PATH"

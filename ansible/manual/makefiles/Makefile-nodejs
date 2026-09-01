@@ -1,0 +1,9 @@
+#REF: https://github.com/ekalinin/nodeenv
+
+venv:
+	yes| pip install nodeenv ||true
+	nodeenv --node=10.17.0 ~/virtualnode/venv10
+	nodeenv --node=13.14.0 ~/virtualnode/venv13
+	nodeenv --node=20.12.0 ~/virtualnode/venv20
+	nodeenv --node=22.11.0 ~/virtualnode/venv22
+	nodeenv ~/virtualnode/venv

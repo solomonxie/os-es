@@ -1,0 +1,4 @@
+
+install-mac:
+	git clone https://github.com/ryanoasis/nerd-fonts.git /tmp/nerd-fonts
+	open '/tmp/patched-fonts/DroidSansMono/DroidSansMNerdFontMono-Regular.otf'
