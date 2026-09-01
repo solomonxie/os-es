@@ -3,8 +3,9 @@
 Ansible playbook that provisions a new Mac: Homebrew taps/formulas/casks,
 Mac App Store apps, Neovim (installed from the GitHub release, not
 Homebrew), Python/Node language environments, iTerm2's profile, and the
-dotfile symlinks into `$HOME`. `manual_macos.sh` is the shell equivalent,
-kept in sync by hand for whenever running Ansible itself isn't an option.
+dotfile symlinks into `$HOME`. `manual/init_macos.sh` is the shell
+equivalent, kept in sync by hand for whenever running Ansible itself
+isn't an option.
 
 ## `manual/`
 
