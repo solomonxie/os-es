@@ -1,5 +1,5 @@
 # REF: https://jonas.github.io/tig/doc/tigrc.5.html
 
-set show-status = yes
+set show-changes = yes
 # bind generic j next
 # bind generic k prev
