@@ -15,7 +15,6 @@ homebrew_packages:
   - awscli
   - htop
   - lua
-  - lua-language-server
   - reattach-to-user-namespace
   - ripgrep
   - telnet
