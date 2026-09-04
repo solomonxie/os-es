@@ -31,3 +31,10 @@
   when: not neovim_installed.stat.exists
   changed_when: true
   failed_when: false
+
+- name: Generate emmylua_ls config with this machine's Neovim runtime path
+  ansible.builtin.template:
+    src: emmyrc.json.j2
+    dest: "{{ ansible_facts.env.HOME }}/myconf/dotfiles/vim/.emmyrc.json"
+    mode: '0644'
+  # Local-only (gitignored, machine-specific path) -- see vim/.emmyrc.json
