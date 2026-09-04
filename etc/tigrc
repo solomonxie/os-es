@@ -4,6 +4,6 @@ set show-changes = yes
 # bind generic j next
 # bind generic k prev
 
-bind generic P ?git push
+bind generic P git push
 bind generic B +git status -sb
 bind generic R ?git reset --hard
