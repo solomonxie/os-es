@@ -2,10 +2,15 @@
 
 Ansible playbook that provisions a new Mac: Homebrew taps/formulas/casks,
 Mac App Store apps, Neovim (installed from the GitHub release, not
-Homebrew), Python/Node language environments, iTerm2's profile, and the
-dotfile symlinks into `$HOME`. `manual/init_macos.sh` is the shell
+Homebrew), Python/Node language environments, iTerm2's prefs, and the
+dotfile symlinks into `$HOME`. `../manual_macos.sh` is the shell
 equivalent, kept in sync by hand for whenever running Ansible itself
 isn't an option.
+
+iTerm2 is pointed at `iterm2/prefs/` in this repo (its own "load prefs
+from a custom folder" feature) instead of a one-way Dynamic Profile, so
+it reads *and writes* that folder — quitting iTerm2 saves whatever you
+changed in the GUI back into the repo, ready to `git commit`.
 
 ## `manual/`
 
