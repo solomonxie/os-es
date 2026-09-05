@@ -1,9 +1,10 @@
 ---
-- name: Install Vim, Zsh, and Tmux packages
+- name: Install Vim, Zsh, Tmux, and Pandoc packages
   community.general.homebrew:
     name:
       - zsh
       - tmux
+      - pandoc  # markdown -> HTML preview (see vimrc-functions.vim PreviewMarkdown)
     state: present
   # Neovim itself is installed by neovim.yml (GitHub release, not Homebrew).
 
