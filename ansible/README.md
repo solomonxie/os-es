@@ -30,12 +30,12 @@ what each applies to:
 - `roles/ubuntu/manual/` and `roles/raspberrypi/manual/` — no tasks yet,
   reference only. `ubuntu/` is the default bucket for anything ambiguous
   that isn't Raspberry-Pi-specific and isn't one of the install_*.sh
-  scripts above (apt/rpm, install_docker.sh, etc.). Each has its own
-  `mini/` — stripped-down zsh/vim/tmux/git configs (no plugin manager, no
-  LLM/dev tooling assumptions) for that kind of remote machine, not this
-  Mac; deliberately duplicated between the two rather than shared, and
-  also still *copied* at `manual/mini/` so the Makefile/script references
-  pointing at the old path resolve.
+  scripts above (apt/rpm, install_docker.sh, etc.). Each also carries its
+  own copy of the stripped-down zsh/vim/tmux/git "-mini" configs (no
+  plugin manager, no LLM/dev tooling assumptions) for that kind of remote
+  machine, not this Mac — deliberately duplicated between the two rather
+  than shared, and still *copied* (not moved) from `manual/mini/` so the
+  Makefile/script references pointing at that original path resolve.
 - `roles/alpine/manual/` — Alpine-only (apk.sh). No tasks/vars yet either.
 - `manual/makefiles/` — Makefiles that span more than one of the roles
   above (mac+ubuntu+raspbian targets in one file) or don't fit any of
