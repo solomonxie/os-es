@@ -44,16 +44,16 @@ ln -sf ~/myconf/dotfiles/tmux/tmux.conf ~/.tmux.conf
 ln -sf ~/myconf/ssh ~/.ssh
 ln -sf ~/myconf/config ~/.config
 ln -sf ~/myconf/dotfiles/etc/tigrc ~/.tigrc
-ln -sf ~/myconf/dotfiles/ai/claude ~/myconf/config/claude
-ln -sf ~/myconf/dotfiles/ai/claude/CLAUDE.md ~/.claude/CLAUDE.md
-ln -sf ~/myconf/dotfiles/ai/claude/settings.json ~/.claude/settings.json
-ln -sf ~/myconf/dotfiles/ai/claude/skills ~/.claude/skills
-ln -sf ~/myconf/dotfiles/ai/openai ~/myconf/config/openai
-ln -sf ~/myconf/dotfiles/ai/openai/AGENTS.md ~/.codex/AGENTS.md
+ln -sf ~/myconf/dotfiles/llm/claude ~/myconf/config/claude
+ln -sf ~/myconf/dotfiles/llm/claude/CLAUDE.md ~/.claude/CLAUDE.md
+ln -sf ~/myconf/dotfiles/llm/claude/settings.json ~/.claude/settings.json
+ln -sf ~/myconf/dotfiles/llm/claude/skills ~/.claude/skills
+ln -sf ~/myconf/dotfiles/llm/openai ~/myconf/config/openai
+ln -sf ~/myconf/dotfiles/llm/openai/AGENTS.md ~/.codex/AGENTS.md
 ln -sf ~/myconf/dotfiles/etc/fd ~/myconf/config/fd
-ln -sf ~/myconf/dotfiles/ai/openai/skills/ansible ~/.codex/skills/ansible
-ln -sf ~/myconf/dotfiles/ai/openai/skills/grillme ~/.codex/skills/grillme
-ln -sf ~/myconf/dotfiles/ai/openai/skills/terraform ~/.codex/skills/terraform
+ln -sf ~/myconf/dotfiles/llm/openai/skills/ansible ~/.codex/skills/ansible
+ln -sf ~/myconf/dotfiles/llm/openai/skills/grillme ~/.codex/skills/grillme
+ln -sf ~/myconf/dotfiles/llm/openai/skills/terraform ~/.codex/skills/terraform
 touch ~/.vimrc-env.vim ~/.vimrc-local.vim ~/.global.env
 cp ~/myconf/dotfiles/etc/git/gitconfig-init.ini ~/.gitconfig
 
