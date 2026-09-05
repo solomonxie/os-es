@@ -53,3 +53,6 @@
 
 - name: Run iTerm2 profile setup
   ansible.builtin.include_tasks: iterm2.yml
+
+- name: Pull default Ollama models
+  ansible.builtin.include_tasks: ollama.yml

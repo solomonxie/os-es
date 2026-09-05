@@ -163,7 +163,7 @@ install_mac:
 	ln -sf  ${DOTFILE_DIR}/tmux .tmux
 	ln -sf  ${DOTFILE_DIR}/tmux/tmux.conf .tmux.conf
 	ln -sf  ${DOTFILE_DIR}/vim .vim
-	ln -sf  ${DOTFILE_DIR}/ansible/manual/mini/vimrc-mini.vim .vimrc
+	ln -sf  ${DOTFILE_DIR}/ansible/roles/ubuntu/manual/vimrc-mini.vim .vimrc
 	ln -sf  ${DOTFILE_DIR}/zsh .zsh
 	ln -sf  ${DOTFILE_DIR}/zsh/zshrc-mac.sh .zshrc
 	ln -sf  ~/myconf/local .local

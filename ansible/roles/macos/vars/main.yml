@@ -64,3 +64,25 @@ mas_apps:
 # together when upgrading.
 neovim_version: "0.11.2"
 neovim_arch: "{{ 'arm64' if ansible_facts.architecture == 'arm64' else 'x86_64' }}"
+
+# Models pulled after `ollama` (see homebrew_packages) is installed.
+ollama_models:
+  - llama3.2
+  - qwen2.5-coder
+  - nomic-embed-text
+
+# Agent skills replicated across LLM tools (Claude, Codex, Antigravity)
+llm_skills:
+  - ansible
+  - aws
+  - clear-sessions
+  - git
+  - grillme
+  - leetcode-pattern-template
+  - progressive-learning
+  - project-planning
+  - python
+  - readme
+  - shell
+  - terraform
+  - walk-through-repo

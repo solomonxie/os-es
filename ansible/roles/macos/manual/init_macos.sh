@@ -50,10 +50,23 @@ ln -sf ~/myconf/dotfiles/llm/claude/settings.json ~/.claude/settings.json
 ln -sf ~/myconf/dotfiles/llm/claude/skills ~/.claude/skills
 ln -sf ~/myconf/dotfiles/llm/openai ~/myconf/config/openai
 ln -sf ~/myconf/dotfiles/llm/openai/AGENTS.md ~/.codex/AGENTS.md
+ln -sf ~/myconf/dotfiles/llm/antigravity ~/myconf/config/antigravity
+ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.gemini/GEMINI.md
+ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.gemini/config/GEMINI.md
+ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.gemini/AGENTS.md
+ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.antigravity/GEMINI.md
+ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.antigravity/AGENTS.md
 ln -sf ~/myconf/dotfiles/etc/fd ~/myconf/config/fd
-ln -sf ~/myconf/dotfiles/llm/openai/skills/ansible ~/.codex/skills/ansible
-ln -sf ~/myconf/dotfiles/llm/openai/skills/grillme ~/.codex/skills/grillme
-ln -sf ~/myconf/dotfiles/llm/openai/skills/terraform ~/.codex/skills/terraform
+mkdir -p ~/.codex/skills ~/.gemini/skills ~/.gemini/config ~/.antigravity
+
+for skill in ansible aws clear-sessions git grillme leetcode-pattern-template \
+  progressive-learning project-planning python readme shell terraform \
+  walk-through-repo; do
+  ln -sf ~/myconf/dotfiles/llm/claude/skills/$skill ~/.codex/skills/$skill
+  ln -sf ~/myconf/dotfiles/llm/claude/skills/$skill ~/.gemini/skills/$skill
+done
+
+
 touch ~/.vimrc-env.vim ~/.vimrc-local.vim ~/.global.env
 cp ~/myconf/dotfiles/etc/git/gitconfig-init.ini ~/.gitconfig
 
@@ -64,3 +77,8 @@ curl -L -o ~/Library/Fonts/DroidSansMNerdFont-Regular.otf \
   https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/DroidSansMono/DroidSansMNerdFont-Regular.otf
 # then relaunch iTerm2 once to pull in the tracked prefs (or General > Preferences
 # > "Save Settings to Folder Now" the other direction, to seed it initially)
+
+# tasks/ollama.yml: default models (ollama itself came from the brew install above)
+ollama pull llama3.2
+ollama pull qwen2.5-coder
+ollama pull nomic-embed-text
