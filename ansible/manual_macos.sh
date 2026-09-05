@@ -58,7 +58,7 @@ touch ~/.vimrc-env.vim ~/.vimrc-local.vim ~/.global.env
 cp ~/myconf/dotfiles/etc/git/gitconfig-init.ini ~/.gitconfig
 
 # tasks/iterm2.yml: live-sync prefs folder + font
-defaults write com.googlecode.iterm2 PrefsCustomFolder -string ~/myconf/dotfiles/iterm2/prefs
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string ~/myconf/dotfiles/ansible/roles/macos/iterm2/prefs
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 curl -L -o ~/Library/Fonts/DroidSansMNerdFont-Regular.otf \
   https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/DroidSansMono/DroidSansMNerdFont-Regular.otf
