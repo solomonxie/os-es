@@ -21,3 +21,14 @@ as their own top-level folders (`makefiles/`, `os/`, `aws/`, `scripts/`,
 `configure`, `init_mac.sh`, `clang/autotools-mac.sh`, `utils/install_ffmpeg.sh`)
 and were consolidated here for one place to look for "how did I set this
 up by hand before automation." Nothing in here is run by the playbook.
+
+Single-OS scripts live under `macos/`, `ubuntu/`, `raspberrypi/`; scripts
+that span multiple OSes (per their own "Enviroment:" header) stay loose
+at the `manual/` root instead of being forced into one folder.
+
+`mini/` — stripped-down zsh/vim/tmux/git configs (no plugin manager, no
+LLM/dev tooling assumptions) for remote servers or a Raspberry Pi, not
+this Mac. `etc/` at the repo root only holds what's actually symlinked
+into the current macOS setup; app configs that fell out of use there
+(ranger, lazygit, ipython, visidata, jupyter/pip) moved into `manual/`
+alongside everything else that predates automation.

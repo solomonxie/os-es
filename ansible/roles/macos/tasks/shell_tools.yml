@@ -15,7 +15,6 @@
     state: link
     force: yes
   loop:
-    # - { src: 'myconf/dotfiles/vim/vimrc-mini.vim', dest: '.vimrc' }
     # - { src: 'myconf/dotfiles/vim', dest: '.config/nvim' }
     - { src: 'myconf/dotfiles/zsh/zshrc-mac.zsh', dest: '.zshrc' }
     - { src: 'myconf/dotfiles/tmux/tmux.conf', dest: '.tmux.conf' }

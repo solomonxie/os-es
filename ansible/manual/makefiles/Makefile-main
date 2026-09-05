@@ -80,7 +80,7 @@ build_ubuntu_samba:
 	# Refer to: https://ubuntu.com/tutorials/install-and-configure-samba#1-overview
 	sudo apt install samba -y ||true
 	mkdir ~/sambashare/ ||true
-	sudo mv ${DOTFILE_DIR}/etc/samba/smb_share_definition.conf /etc/samba/smb.conf
+	sudo mv ${DOTFILE_DIR}/ansible/manual/ubuntu/smb_share_definition.conf /etc/samba/smb.conf
 	sudo service smbd restart
 	sudo smbpasswd -a ${ME_USER}
 
@@ -163,7 +163,7 @@ install_mac:
 	ln -sf  ${DOTFILE_DIR}/tmux .tmux
 	ln -sf  ${DOTFILE_DIR}/tmux/tmux.conf .tmux.conf
 	ln -sf  ${DOTFILE_DIR}/vim .vim
-	ln -sf  ${DOTFILE_DIR}/vim/vimrc-mini.vim .vimrc
+	ln -sf  ${DOTFILE_DIR}/ansible/manual/mini/vimrc-mini.vim .vimrc
 	ln -sf  ${DOTFILE_DIR}/zsh .zsh
 	ln -sf  ${DOTFILE_DIR}/zsh/zshrc-mac.sh .zshrc
 	ln -sf  ~/myconf/local .local
