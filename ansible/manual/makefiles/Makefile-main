@@ -80,7 +80,7 @@ build_ubuntu_samba:
 	# Refer to: https://ubuntu.com/tutorials/install-and-configure-samba#1-overview
 	sudo apt install samba -y ||true
 	mkdir ~/sambashare/ ||true
-	sudo mv ${DOTFILE_DIR}/ansible/manual/ubuntu/smb_share_definition.conf /etc/samba/smb.conf
+	sudo mv ${DOTFILE_DIR}/ansible/roles/ubuntu-or-raspberrypi/manual/ubuntu/smb_share_definition.conf /etc/samba/smb.conf
 	sudo service smbd restart
 	sudo smbpasswd -a ${ME_USER}
 
