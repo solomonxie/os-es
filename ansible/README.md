@@ -21,18 +21,22 @@ what each applies to:
 
 - `roles/macos/manual/` — mac-only reference scripts/configs
   (homebrew.sh, init_mac.sh, clang_autotools_mac.sh, key remapping, iTerm2
-  profile, Makefile-macos/-font/-ruby/-lua...), plus app configs this Mac
-  still uses by hand rather than via the role (lazygit.yml, pacman.sh,
-  visidatarc.py).
+  profile, Makefile-macos/-font/-ruby/-lua...); app configs this Mac still
+  uses by hand rather than via the role (lazygit.yml, pacman.sh,
+  visidatarc.py, ranger/, python/ jupyter+debugger configs); and the
+  install_{nvim,python,tmux,vim,zsh}.sh scripts, even though their own
+  "Enviroment:" header still lists Ubuntu/Raspbian too — this Mac is the
+  one that actually runs them by hand.
 - `roles/ubuntu/manual/` and `roles/raspberrypi/manual/` — no tasks yet,
-  reference only. `ubuntu/` also holds every script spanning multiple
-  Linux-ish OSes that isn't Raspberry-Pi-specific (apt/apk/rpm,
-  install_vim.sh, install_docker.sh, etc.) — that's the default bucket for
-  anything ambiguous. Each has its own `mini/` — stripped-down zsh/vim/tmux/git
-  configs (no plugin manager, no LLM/dev tooling assumptions) for that kind
-  of remote machine, not this Mac; deliberately duplicated between the two
-  rather than shared, and also still *copied* at `manual/mini/` so the
-  Makefile/script references pointing at the old path resolve.
+  reference only. `ubuntu/` is the default bucket for anything ambiguous
+  that isn't Raspberry-Pi-specific and isn't one of the install_*.sh
+  scripts above (apt/rpm, install_docker.sh, etc.). Each has its own
+  `mini/` — stripped-down zsh/vim/tmux/git configs (no plugin manager, no
+  LLM/dev tooling assumptions) for that kind of remote machine, not this
+  Mac; deliberately duplicated between the two rather than shared, and
+  also still *copied* at `manual/mini/` so the Makefile/script references
+  pointing at the old path resolve.
+- `roles/alpine/manual/` — Alpine-only (apk.sh). No tasks/vars yet either.
 - `manual/makefiles/` — Makefiles that span more than one of the roles
   above (mac+ubuntu+raspbian targets in one file) or don't fit any of
   them (Makefile-alpine-os); everything with a single clear OS moved into
