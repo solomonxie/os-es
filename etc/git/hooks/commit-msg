@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Strip AI-attribution trailers Claude Code (or similar tools) may append.
+set -euo pipefail
+
+MSG_FILE="$1"
+sed -i.bak -E '/^Co-Authored-By: Claude/d; /^Claude-Session:/d; /^🤖 Generated with \[Claude Code\]/d' "$MSG_FILE"
+rm -f "$MSG_FILE.bak"
