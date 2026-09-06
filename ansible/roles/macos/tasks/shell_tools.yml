@@ -41,6 +41,7 @@
     - { src: 'myconf/dotfiles/llm/openai', dest: 'myconf/config/openai' }
     - { src: 'myconf/dotfiles/llm/openai/AGENTS.md', dest: '.codex/AGENTS.md' }
     - { src: 'myconf/dotfiles/llm/antigravity', dest: 'myconf/config/antigravity' }
+    - { src: 'myconf/dotfiles/llm/antigravity/settings.json', dest: '.gemini/settings.json' }
     - { src: 'myconf/dotfiles/llm/antigravity/GEMINI.md', dest: '.gemini/GEMINI.md' }
     - { src: 'myconf/dotfiles/llm/antigravity/GEMINI.md', dest: '.gemini/config/GEMINI.md' }
     - { src: 'myconf/dotfiles/llm/antigravity/GEMINI.md', dest: '.gemini/AGENTS.md' }
