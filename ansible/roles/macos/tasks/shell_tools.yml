@@ -38,6 +38,7 @@
     - { src: 'myconf/dotfiles/llm/claude/CLAUDE.md', dest: '.claude/CLAUDE.md' }
     - { src: 'myconf/dotfiles/llm/claude/settings.json', dest: '.claude/settings.json' }
     - { src: 'myconf/dotfiles/llm/claude/skills', dest: '.claude/skills' }
+    - { src: 'myconf/dotfiles/llm/claude/hooks', dest: '.claude/hooks' }
     - { src: 'myconf/dotfiles/llm/openai', dest: 'myconf/config/openai' }
     - { src: 'myconf/dotfiles/llm/openai/AGENTS.md', dest: '.codex/AGENTS.md' }
     - { src: 'myconf/dotfiles/llm/antigravity', dest: 'myconf/config/antigravity' }

@@ -48,6 +48,7 @@ ln -sf ~/myconf/dotfiles/llm/claude ~/myconf/config/claude
 ln -sf ~/myconf/dotfiles/llm/claude/CLAUDE.md ~/.claude/CLAUDE.md
 ln -sf ~/myconf/dotfiles/llm/claude/settings.json ~/.claude/settings.json
 ln -sf ~/myconf/dotfiles/llm/claude/skills ~/.claude/skills
+ln -sfn ~/myconf/dotfiles/llm/claude/hooks ~/.claude/hooks
 ln -sf ~/myconf/dotfiles/llm/openai ~/myconf/config/openai
 ln -sf ~/myconf/dotfiles/llm/openai/AGENTS.md ~/.codex/AGENTS.md
 ln -sf ~/myconf/dotfiles/llm/antigravity ~/myconf/config/antigravity
