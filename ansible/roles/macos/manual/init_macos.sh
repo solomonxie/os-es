@@ -21,6 +21,10 @@ mas install 410395246   # Microsoft OneNote
 mas install 836500024   # WeChat
 mas install 1221250572  # Xnip
 
+# tasks/system_defaults.yml: macOS system settings
+defaults write com.apple.screencapture location "$HOME/Downloads"
+killall SystemUIServer
+
 # tasks/languages.yml: python/node virtualenvs
 brew install virtualenv nodeenv
 virtualenv -p python3.14 ~/virtualenv/venv

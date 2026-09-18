@@ -42,6 +42,9 @@
 #   notify: Restart Dock
 
 # Modular includes
+- name: Apply macOS system defaults
+  ansible.builtin.include_tasks: system_defaults.yml
+
 - name: Run Programming Languages setup (Python, nodejs...)
   ansible.builtin.include_tasks: languages.yml
 
