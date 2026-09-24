@@ -23,6 +23,7 @@ mas install 1221250572  # Xnip
 
 # tasks/system_defaults.yml: macOS system settings
 defaults write com.apple.screencapture location "$HOME/Downloads"
+defaults write com.apple.screencapture disable-sound -bool true
 killall SystemUIServer
 
 # tasks/languages.yml: python/node virtualenvs

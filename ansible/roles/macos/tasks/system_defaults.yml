@@ -7,3 +7,12 @@
     value: "{{ ansible_facts.env.HOME }}/Downloads"
     state: present
   notify: Restart SystemUIServer
+
+- name: Mute the screenshot shutter sound
+  community.general.osx_defaults:
+    domain: com.apple.screencapture
+    key: disable-sound
+    type: bool
+    value: true
+    state: present
+  notify: Restart SystemUIServer
