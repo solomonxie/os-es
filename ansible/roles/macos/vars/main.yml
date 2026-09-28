@@ -75,7 +75,6 @@ ollama_models:
 llm_skills:
   - ansible
   - aws
-  - clear-sessions
   - git
   - grillme
   - leetcode-pattern-template

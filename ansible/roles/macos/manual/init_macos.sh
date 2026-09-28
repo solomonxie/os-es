@@ -65,7 +65,7 @@ ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.antigravity/AGENTS.md
 ln -sf ~/myconf/dotfiles/etc/fd ~/myconf/config/fd
 mkdir -p ~/.codex/skills ~/.gemini/skills ~/.gemini/config ~/.antigravity
 
-for skill in ansible aws clear-sessions git grillme leetcode-pattern-template \
+for skill in ansible aws git grillme leetcode-pattern-template \
   progressive-learning project-planning python readme shell terraform \
   walk-through-repo; do
   ln -sf ~/myconf/dotfiles/llm/claude/skills/$skill ~/.codex/skills/$skill
