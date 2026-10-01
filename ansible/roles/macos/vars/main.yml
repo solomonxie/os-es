@@ -75,13 +75,17 @@ ollama_models:
 llm_skills:
   - ansible
   - aws
+  - chrome-extension
   - git
-  - grillme
   - leetcode-pattern-template
   - progressive-learning
   - project-planning
+  - push-commit
   - python
   - readme
+  - security
   - shell
   - terraform
+  - tmux
+  - uiux
   - walk-through-repo
