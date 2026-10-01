@@ -16,3 +16,52 @@
     value: true
     state: present
   notify: Restart SystemUIServer
+
+- name: Set the system language to English (US)
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleLanguages
+    type: array
+    value:
+      - en-US
+    state: present
+
+- name: Set the system locale to en_US
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleLocale
+    type: string
+    value: en_US
+    state: present
+
+# The enabled-input-sources order decides which keyboard is active at login;
+# U.S. must come first or macOS starts in the Pinyin input method.
+- name: Make U.S. English the first/default keyboard input source
+  community.general.osx_defaults:
+    domain: com.apple.HIToolbox
+    key: AppleEnabledInputSources
+    type: array
+    value:
+      - { InputSourceKind: "Keyboard Layout", "KeyboardLayout ID": 0, "KeyboardLayout Name": "U.S." }
+      - { "Bundle ID": "com.apple.CharacterPaletteIM", InputSourceKind: "Non Keyboard Input Method" }
+      - { "Bundle ID": "com.apple.PressAndHold", InputSourceKind: "Non Keyboard Input Method" }
+      - { "Bundle ID": "com.apple.inputmethod.SCIM", InputSourceKind: "Keyboard Input Method" }
+      - { "Bundle ID": "com.apple.inputmethod.SCIM", "Input Mode": "com.apple.inputmethod.SCIM.ITABC", InputSourceKind: "Input Mode" }
+
+- name: Select U.S. English as the active keyboard input source
+  community.general.osx_defaults:
+    domain: com.apple.HIToolbox
+    key: AppleSelectedInputSources
+    type: array
+    value:
+      - { InputSourceKind: "Keyboard Layout", "KeyboardLayout ID": 0, "KeyboardLayout Name": "U.S." }
+      - { "Bundle ID": "com.apple.PressAndHold", InputSourceKind: "Non Keyboard Input Method" }
+    state: present
+
+- name: Set the current keyboard layout to U.S. English
+  community.general.osx_defaults:
+    domain: com.apple.HIToolbox
+    key: AppleCurrentKeyboardLayoutInputSourceID
+    type: string
+    value: com.apple.keylayout.US
+    state: present

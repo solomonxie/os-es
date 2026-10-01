@@ -24,6 +24,24 @@ mas install 1221250572  # Xnip
 # tasks/system_defaults.yml: macOS system settings
 defaults write com.apple.screencapture location "$HOME/Downloads"
 defaults write com.apple.screencapture disable-sound -bool true
+
+# System language + locale: English (US)
+defaults write NSGlobalDomain AppleLanguages -array "en-US"
+defaults write NSGlobalDomain AppleLocale -string "en_US"
+
+# Keyboard: U.S. English first in the enabled list, so it is the login default
+# (otherwise macOS starts in the Pinyin input method).
+defaults write com.apple.HIToolbox AppleEnabledInputSources -array \
+  '{ InputSourceKind = "Keyboard Layout"; "KeyboardLayout ID" = 0; "KeyboardLayout Name" = "U.S."; }' \
+  '{ "Bundle ID" = "com.apple.CharacterPaletteIM"; InputSourceKind = "Non Keyboard Input Method"; }' \
+  '{ "Bundle ID" = "com.apple.PressAndHold"; InputSourceKind = "Non Keyboard Input Method"; }' \
+  '{ "Bundle ID" = "com.apple.inputmethod.SCIM"; InputSourceKind = "Keyboard Input Method"; }' \
+  '{ "Bundle ID" = "com.apple.inputmethod.SCIM"; "Input Mode" = "com.apple.inputmethod.SCIM.ITABC"; InputSourceKind = "Input Mode"; }'
+defaults write com.apple.HIToolbox AppleSelectedInputSources -array \
+  '{ InputSourceKind = "Keyboard Layout"; "KeyboardLayout ID" = 0; "KeyboardLayout Name" = "U.S."; }' \
+  '{ "Bundle ID" = "com.apple.PressAndHold"; InputSourceKind = "Non Keyboard Input Method"; }'
+defaults write com.apple.HIToolbox AppleCurrentKeyboardLayoutInputSourceID -string "com.apple.keylayout.US"
+
 killall SystemUIServer
 
 # tasks/languages.yml: python/node virtualenvs
