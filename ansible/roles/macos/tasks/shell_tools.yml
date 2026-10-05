@@ -53,6 +53,13 @@
     # config.toml is NOT symlinked/tracked: it's too sensitive for git, kept as a
     # plain file at ~/.codex/config.toml managed outside this repo.
 
+- name: Install tmux server LaunchAgent (not loaded here, see tmux/README.md)
+  ansible.builtin.copy:
+    src: "{{ ansible_facts.env.HOME }}/myconf/dotfiles/tmux/com.local.tmux.plist"
+    dest: "{{ ansible_facts.env.HOME }}/Library/LaunchAgents/com.local.tmux.plist"
+    remote_src: true
+    mode: '0644'
+
 - name: Link Codex user skills without replacing system-managed skills
   ansible.builtin.file:
     src: "{{ ansible_facts.env.HOME }}/myconf/dotfiles/llm/claude/skills/{{ item }}"
