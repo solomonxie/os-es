@@ -11,17 +11,7 @@
     name: "{{ item }}"
     state: present
   loop: "{{ homebrew_packages }}"
-- name: Install Homebrew cask applications
-  community.general.homebrew_cask:
-    name: "{{ item }}"
-    state: present
-  loop: "{{ homebrew_cask_packages }}"
 
-- name: Install Mac App Store applications
-  community.general.mas:
-    id: "{{ item.id }}"
-    state: present
-  loop: "{{ mas_apps }}"
 
 
 # - name: Set macOS system defaults (e.g., show hidden files in Finder)
@@ -54,8 +44,8 @@
 - name: Run Vim, Zsh, and Tmux setup
   ansible.builtin.include_tasks: shell_tools.yml
 
+- name: Run LLM tools setup (Claude, Codex, Antigravity, Ollama)
+  ansible.builtin.include_tasks: llm.yml
+
 - name: Run iTerm2 profile setup
   ansible.builtin.include_tasks: iterm2.yml
-
-- name: Pull default Ollama models
-  ansible.builtin.include_tasks: ollama.yml

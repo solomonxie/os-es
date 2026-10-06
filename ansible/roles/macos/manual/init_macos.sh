@@ -1,25 +1,11 @@
 #!/usr/bin/env bash
 # Manual equivalent of ansible/roles/macos — for reference, not execution.
 
-# tasks/main.yml: taps
-brew tap homebrew/cask
-
 # tasks/main.yml: formulas
 brew install vim tmux zsh git wget ansible terraform awscli htop lua \
   lua-language-server reattach-to-user-namespace ripgrep telnet coreutils \
-  mactop ruby cmake sqlite fd duckdb tig ffmpeg tree ncdu ollama fzf \
-  gnu-sed gnu-tar virtualenv python@3.12 python@3.13 python@3.14 mas
-
-# tasks/main.yml: casks
-brew install --cask visual-studio-code sublime-text iterm2 google-chrome \
-  zoom microsoft-teams claude-code antigravity-cli caffeine alfred iina \
-  baidu-netdisk
-
-# tasks/main.yml: Mac App Store apps (mas)
-mas install 497799835   # Xcode
-mas install 410395246   # Microsoft OneNote
-mas install 836500024   # WeChat
-mas install 1221250572  # Xnip
+  mactop ruby cmake sqlite fd duckdb tig ffmpeg tree ncdu fzf \
+  gnu-sed gnu-tar virtualenv python@3.12 python@3.13 python@3.14
 
 # tasks/system_defaults.yml: macOS system settings
 defaults write com.apple.screencapture location "$HOME/Downloads"
@@ -67,28 +53,7 @@ ln -sf ~/myconf/dotfiles/tmux/tmux.conf ~/.tmux.conf
 ln -sf ~/myconf/ssh ~/.ssh
 ln -sf ~/myconf/config ~/.config
 ln -sf ~/myconf/dotfiles/etc/tigrc ~/.tigrc
-ln -sf ~/myconf/dotfiles/llm/claude ~/myconf/config/claude
-ln -sf ~/myconf/dotfiles/llm/claude/CLAUDE.md ~/.claude/CLAUDE.md
-ln -sf ~/myconf/dotfiles/llm/claude/settings.json ~/.claude/settings.json
-ln -sf ~/myconf/dotfiles/llm/claude/skills ~/.claude/skills
-ln -sfn ~/myconf/dotfiles/llm/claude/hooks ~/.claude/hooks
-ln -sf ~/myconf/dotfiles/llm/openai ~/myconf/config/openai
-ln -sf ~/myconf/dotfiles/llm/openai/AGENTS.md ~/.codex/AGENTS.md
-ln -sf ~/myconf/dotfiles/llm/antigravity ~/myconf/config/antigravity
-ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.gemini/GEMINI.md
-ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.gemini/config/GEMINI.md
-ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.gemini/AGENTS.md
-ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.antigravity/GEMINI.md
-ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.antigravity/AGENTS.md
 ln -sf ~/myconf/dotfiles/etc/fd ~/myconf/config/fd
-mkdir -p ~/.codex/skills ~/.gemini/skills ~/.gemini/config ~/.antigravity
-
-for skill in ansible aws chrome-extension git leetcode-pattern-template \
-  progressive-learning project-planning push-commit python readme security \
-  shell terraform tmux uiux walk-through-repo; do
-  ln -sf ~/myconf/dotfiles/llm/claude/skills/$skill ~/.codex/skills/$skill
-  ln -sf ~/myconf/dotfiles/llm/claude/skills/$skill ~/.gemini/skills/$skill
-done
 
 
 touch ~/.vimrc-env.vim ~/.vimrc-local.vim ~/.global.env
@@ -102,7 +67,26 @@ curl -L -o ~/Library/Fonts/DroidSansMNerdFont-Regular.otf \
 # then relaunch iTerm2 once to pull in the tracked prefs (or General > Preferences
 # > "Save Settings to Folder Now" the other direction, to seed it initially)
 
-# tasks/ollama.yml: default models (ollama itself came from the brew install above)
-ollama pull llama3.2
-ollama pull qwen2.5-coder
-ollama pull nomic-embed-text
+# tasks/llm.yml: Ollama + LLM tool configs and skills
+brew install ollama
+mkdir -p ~/.claude ~/.codex/skills ~/.gemini/skills ~/.gemini/config ~/.antigravity
+ln -sf ~/myconf/dotfiles/llm/claude ~/myconf/config/claude
+ln -sf ~/myconf/dotfiles/llm/claude/CLAUDE.md ~/.claude/CLAUDE.md
+ln -sf ~/myconf/dotfiles/llm/claude/settings.json ~/.claude/settings.json
+ln -sf ~/myconf/dotfiles/llm/claude/skills ~/.claude/skills
+ln -sfn ~/myconf/dotfiles/llm/claude/hooks ~/.claude/hooks
+ln -sf ~/myconf/dotfiles/llm/openai ~/myconf/config/openai
+ln -sf ~/myconf/dotfiles/llm/openai/AGENTS.md ~/.codex/AGENTS.md
+ln -sf ~/myconf/dotfiles/llm/antigravity ~/myconf/config/antigravity
+ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.gemini/GEMINI.md
+ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.gemini/config/GEMINI.md
+ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.gemini/AGENTS.md
+ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.antigravity/GEMINI.md
+ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.antigravity/AGENTS.md
+
+for skill in ansible aws chrome-extension git leetcode-pattern-template \
+  progressive-learning project-planning push-commit python readme security \
+  shell terraform tmux uiux walk-through-repo; do
+  ln -sf ~/myconf/dotfiles/llm/claude/skills/$skill ~/.codex/skills/$skill
+  ln -sf ~/myconf/dotfiles/llm/claude/skills/$skill ~/.gemini/skills/$skill
+done

@@ -15,11 +15,6 @@
     mode: '0755'
   loop:
     - myconf/config
-    - .claude
-    - .codex/skills
-    - .gemini/skills
-    - .gemini/config
-    - .antigravity
 
 - name: Create symlinks for dotfiles
   ansible.builtin.file:
@@ -34,49 +29,7 @@
     - { src: 'myconf/ssh', dest: '.ssh' }
     - { src: 'myconf/config', dest: '.config' }
     - { src: 'myconf/dotfiles/etc/tigrc', dest: '.tigrc' }
-    - { src: 'myconf/dotfiles/llm/claude', dest: 'myconf/config/claude' }
-    - { src: 'myconf/dotfiles/llm/claude/CLAUDE.md', dest: '.claude/CLAUDE.md' }
-    - { src: 'myconf/dotfiles/llm/claude/settings.json', dest: '.claude/settings.json' }
-    - { src: 'myconf/dotfiles/llm/claude/skills', dest: '.claude/skills' }
-    - { src: 'myconf/dotfiles/llm/claude/hooks', dest: '.claude/hooks' }
-    - { src: 'myconf/dotfiles/llm/openai', dest: 'myconf/config/openai' }
-    - { src: 'myconf/dotfiles/llm/openai/AGENTS.md', dest: '.codex/AGENTS.md' }
-    - { src: 'myconf/dotfiles/llm/antigravity', dest: 'myconf/config/antigravity' }
-    - { src: 'myconf/dotfiles/llm/antigravity/settings.json', dest: '.gemini/settings.json' }
-    - { src: 'myconf/dotfiles/llm/antigravity/GEMINI.md', dest: '.gemini/GEMINI.md' }
-    - { src: 'myconf/dotfiles/llm/antigravity/GEMINI.md', dest: '.gemini/config/GEMINI.md' }
-    - { src: 'myconf/dotfiles/llm/antigravity/GEMINI.md', dest: '.gemini/AGENTS.md' }
-    - { src: 'myconf/dotfiles/llm/antigravity/GEMINI.md', dest: '.antigravity/GEMINI.md' }
-    - { src: 'myconf/dotfiles/llm/antigravity/GEMINI.md', dest: '.antigravity/AGENTS.md' }
     - { src: 'myconf/dotfiles/etc/fd', dest: 'myconf/config/fd' }
-
-    # config.toml is NOT symlinked/tracked: it's too sensitive for git, kept as a
-    # plain file at ~/.codex/config.toml managed outside this repo.
-
-- name: Install tmux server LaunchAgent (not loaded here, see tmux/README.md)
-  ansible.builtin.copy:
-    src: "{{ ansible_facts.env.HOME }}/myconf/dotfiles/tmux/com.local.tmux.plist"
-    dest: "{{ ansible_facts.env.HOME }}/Library/LaunchAgents/com.local.tmux.plist"
-    remote_src: true
-    mode: '0644'
-
-- name: Link Codex user skills without replacing system-managed skills
-  ansible.builtin.file:
-    src: "{{ ansible_facts.env.HOME }}/myconf/dotfiles/llm/claude/skills/{{ item }}"
-    dest: "{{ ansible_facts.env.HOME }}/.codex/skills/{{ item }}"
-    state: link
-    force: yes
-  loop: "{{ llm_skills }}"
-
-- name: Link Antigravity user skills without replacing system-managed skills
-  ansible.builtin.file:
-    src: "{{ ansible_facts.env.HOME }}/myconf/dotfiles/llm/claude/skills/{{ item }}"
-    dest: "{{ ansible_facts.env.HOME }}/.gemini/skills/{{ item }}"
-    state: link
-    force: yes
-  loop: "{{ llm_skills }}"
-
-
 
 - name: Touch files
   ansible.builtin.file:

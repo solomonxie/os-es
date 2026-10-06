@@ -33,7 +33,6 @@ install_s3fs_ubuntu(){
 }
 
 install_s3fs_mac(){
-    sudo brew cask install osxfuse
     brew install s3fs
     # Custom
     # sudo /bin/cp -rfX /usr/local/Cellar/fuse4x-kext/0.9.2/Library/Extensions/fuse4x.kext /Library/Extensions

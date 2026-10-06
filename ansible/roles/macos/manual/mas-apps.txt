@@ -1,7 +1,0 @@
-1452453066  Hidden Bar         (1.8)
-6737590363  ibisPaint          (13.1.18)
- 784801555  Microsoft OneNote  (16.105.2)
- 425424353  The Unarchiver     (4.3.9)
- 836500024  WeChat             (4.1.7)
- 497799835  Xcode              (16.4)
-1221250572  Xnip               (2.2.6)

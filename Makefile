@@ -1,4 +1,4 @@
-.PHONY: install-mac backup-mac backup-brew backup-mas backup-vscode backup-gitconfig backup-iterm2-profile
+.PHONY: install-mac backup-mac backup-brew backup-vscode backup-gitconfig backup-iterm2-profile
 
 export PATH := /opt/homebrew/bin:/usr/local/bin:$(PATH)
 
@@ -55,15 +55,12 @@ install-mac:
 
 
 
-backup-mac: backup-brew backup-mas backup-vscode backup-gitconfig
+backup-mac: backup-brew backup-vscode backup-gitconfig
 	@echo "Done. iTerm2 prefs sync automatically on quit (ansible/roles/macos/iterm2/prefs)."
 	@echo "Run 'make backup-iterm2-profile' separately to refresh the legacy Dynamic Profile JSON."
 
 backup-brew:
 	brew bundle dump --force --file="$(MACOS_MANUAL)/Brewfile"
-
-backup-mas:
-	mas list > "$(MACOS_MANUAL)/mas-apps.txt"
 
 backup-vscode:
 	mkdir -p "$(MACOS_MANUAL)/vscode"

@@ -37,8 +37,6 @@ install_utils_mac(){
     # Debugging for bash script
     brew install bashdb
     brew install watch
-    # Fonts
-    brew cask install font-hack-nerd-font
 }
 
 recover_homebrew(){

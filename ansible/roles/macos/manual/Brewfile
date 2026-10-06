@@ -27,7 +27,6 @@ brew "htop"
 brew "kafka"
 brew "lua-language-server"
 brew "mactop"
-brew "mas"
 brew "ollama"
 brew "p7zip"
 brew "pandoc"
@@ -47,12 +46,3 @@ brew "vim"
 brew "virtualenv"
 brew "zsh"
 brew "hashicorp/tap/terraform"
-cask "basictex"
-cask "claude-code"
-mas "Hidden Bar", id: 1452453066
-mas "ibisPaint", id: 6737590363
-mas "Microsoft OneNote", id: 784801555
-mas "The Unarchiver", id: 425424353
-mas "WeChat", id: 836500024
-mas "Xcode", id: 497799835
-mas "Xnip", id: 1221250572

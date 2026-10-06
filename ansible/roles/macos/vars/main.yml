@@ -1,8 +1,7 @@
 # Centralize package names and application lists here.
-# Get ideas from: brew list --formula; brew list --cask
+# Get ideas from: brew list --formula
 ---
-homebrew_taps:
-  - homebrew/cask
+homebrew_taps: []
 
 homebrew_packages:
   - vim
@@ -29,7 +28,6 @@ homebrew_packages:
   - ffmpeg
   - tree
   - ncdu
-  - ollama
   - fzf
   - gnu-sed
   - gnu-tar
@@ -37,27 +35,6 @@ homebrew_packages:
   - python@3.12
   - python@3.13
   - python@3.14
-  - mas # Required to install Mac App Store apps via CLI
-
-homebrew_cask_packages:
-  - visual-studio-code
-  - sublime-text
-  - iterm2
-  - google-chrome
-  - zoom
-  - microsoft-teams
-  - claude-code
-  - antigravity-cli
-  - caffeine
-  - alfred
-  - iina
-  - baidu-netdisk
-
-mas_apps:
-  - { name: "Xcode", id: 497799835 }
-  - { name: "Microsoft OneNote", id: 410395246 }
-  - { name: "WeChat", id: 836500024 }
-  - { name: "Xnip", id: 1221250572 }
 
 # Neovim is NOT installed via Homebrew: it's downloaded from the GitHub release
 # so it matches the version zsh/zshrc-mac.zsh puts first on PATH. Bump both
@@ -65,11 +42,6 @@ mas_apps:
 neovim_version: "0.11.2"
 neovim_arch: "{{ 'arm64' if ansible_facts.architecture == 'arm64' else 'x86_64' }}"
 
-# Models pulled after `ollama` (see homebrew_packages) is installed.
-ollama_models:
-  - llama3.2
-  - qwen2.5-coder
-  - nomic-embed-text
 
 # Agent skills replicated across LLM tools (Claude, Codex, Antigravity)
 llm_skills:
