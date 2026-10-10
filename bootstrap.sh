@@ -6,6 +6,6 @@ if ! xcode-select -p >/dev/null 2>&1; then
   echo "Re-run this once the Command Line Tools finish installing."
   exit 1
 fi
-mkdir -p ~/.dotfiles
-[ -d ~/.dotfiles/os-es ] || git clone https://github.com/solomonxie/os-es.git ~/.dotfiles/os-es
-make -C ~/.dotfiles/os-es install-mac
+mkdir -p ~/.config
+[ -d ~/.config/os-es ] || git clone https://github.com/solomonxie/os-es.git ~/.config/os-es
+make -C ~/.config/os-es install-mac

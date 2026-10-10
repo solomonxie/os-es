@@ -48,13 +48,13 @@ xattr -r -d com.apple.quarantine ~/nvim-macos-$NVIM_VERSION
 
 # tasks/shell_tools.yml: shell packages + dotfile symlinks
 brew install zsh tmux
-~/.dotfiles/os-es/install.sh  # tig, fd, pylint, git configs
+~/.config/os-es/install.sh  # tig, fd, pylint, git configs
 
 
 touch ~/.vimrc-env.vim ~/.vimrc-local.vim ~/.global.env
 
 # tasks/iterm2.yml: live-sync prefs folder + font
-defaults write com.googlecode.iterm2 PrefsCustomFolder -string ~/.dotfiles/os-es/ansible/roles/macos/iterm2/prefs
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string ~/.config/os-es/ansible/roles/macos/iterm2/prefs
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 curl -L -o ~/Library/Fonts/DroidSansMNerdFont-Regular.otf \
   https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/DroidSansMono/DroidSansMNerdFont-Regular.otf
@@ -62,9 +62,10 @@ curl -L -o ~/Library/Fonts/DroidSansMNerdFont-Regular.otf \
 # > "Save Settings to Folder Now" the other direction, to seed it initially)
 
 # tasks/repos.yml: public config repos, each linking itself into place
-for repo in svimmer coastal-shells tmuxedo llm-collections; do
-  [ -d ~/.dotfiles/$repo ] || git clone https://github.com/solomonxie/$repo.git ~/.dotfiles/$repo
-  ~/.dotfiles/$repo/install.sh
+for pair in svimmer:nvim coastal-shells:zsh tmuxedo:tmux llm-collections:llm-collections; do
+  repo=${pair%%:*} dest=~/.config/${pair#*:}
+  [ -d $dest ] || git clone https://github.com/solomonxie/$repo.git $dest
+  $dest/install.sh
 done
 
 # tasks/llm.yml

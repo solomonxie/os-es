@@ -43,9 +43,9 @@ neovim_version: "0.11.2"
 neovim_arch: "{{ 'arm64' if ansible_facts.architecture == 'arm64' else 'x86_64' }}"
 
 
-# Public config repos cloned into ~/.dotfiles/<name>; each one's install.sh symlinks it into place.
+# Public config repos, cloned straight into their tool's config dir; each install.sh links the rest.
 config_repos:
-  - svimmer
-  - coastal-shells
-  - tmuxedo
-  - llm-collections
+  - { name: svimmer, dest: .config/nvim }
+  - { name: coastal-shells, dest: .config/zsh }
+  - { name: tmuxedo, dest: .config/tmux }
+  - { name: llm-collections, dest: .config/llm-collections }
