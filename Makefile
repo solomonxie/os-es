@@ -29,27 +29,6 @@ install-mac:
 		echo "==> Ansible not found. Installing via Homebrew..."; \
 		brew install ansible; \
 	fi; \
-	mkdir -p "$(HOME)/myconf"; \
-	if [ "$(DOTFILES)" != "$(HOME)/myconf/os-es" ] && [ ! -e "$(HOME)/myconf/os-es" ]; then \
-		echo "==> Linking $(DOTFILES) to $(HOME)/myconf/os-es..."; \
-		ln -s "$(DOTFILES)" "$(HOME)/myconf/os-es"; \
-	fi; \
-	if [ -d "$(HOME)/.ssh" ] && [ ! -L "$(HOME)/.ssh" ]; then \
-		echo "==> Migrating existing ~/.ssh to ~/myconf/ssh..."; \
-		mkdir -p "$(HOME)/myconf/ssh"; \
-		cp -an "$(HOME)/.ssh/." "$(HOME)/myconf/ssh/"; \
-		chmod 700 "$(HOME)/myconf/ssh"; \
-		mv "$(HOME)/.ssh" "$(HOME)/.ssh.bak.$$(date +%Y%m%d%H%M%S)"; \
-	fi; \
-	mkdir -p "$(HOME)/myconf/ssh"; \
-	chmod 700 "$(HOME)/myconf/ssh"; \
-	if [ -d "$(HOME)/.config" ] && [ ! -L "$(HOME)/.config" ]; then \
-		echo "==> Migrating existing ~/.config to ~/myconf/config..."; \
-		mkdir -p "$(HOME)/myconf/config"; \
-		cp -an "$(HOME)/.config/." "$(HOME)/myconf/config/"; \
-		mv "$(HOME)/.config" "$(HOME)/.config.bak.$$(date +%Y%m%d%H%M%S)"; \
-	fi; \
-	mkdir -p "$(HOME)/myconf/config"; \
 	echo "==> Running Ansible macOS setup..."; \
 	cd "$(DOTFILES)/ansible" && ansible-playbook -i inventory.ini site.yml $(ANSIBLE_ARGS)
 

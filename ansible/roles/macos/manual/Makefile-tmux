@@ -2,7 +2,7 @@
 -include envfile
 -include envfile-local
 
-DOTFILES ?= ~/myconf/dotfiles
+DOTFILES ?= ~/.dotfiles/os-es
 MYOS ?= `cat /tmp/env-os`
 USER ?= `cat /tmp/env-user`
 

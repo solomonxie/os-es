@@ -11,8 +11,8 @@ Machine setup for macOS, Ubuntu, Alpine and Raspberry Pi, plus shared CLI config
 curl -fsSL https://raw.githubusercontent.com/solomonxie/os-es/master/bootstrap.sh | bash
 ```
 
-This installs the Command Line Tools, clones this repo to `~/myconf/os-es`, then runs `make install-mac`, which installs Homebrew and Ansible and runs the playbook. No `sudo`.
+This installs the Command Line Tools, clones this repo to `~/.dotfiles/os-es`, then runs `make install-mac`, which installs Homebrew and Ansible and runs the playbook. No `sudo`.
 
-`~/.ssh` is linked to `~/myconf/ssh`. Restore your keys there before cloning anything private.
+The other repos are cloned to `~/.dotfiles/<repo>`. `install.sh` links the shared CLI configs: `~/.tigrc`, plus `fd`, `pylintrc` and git files under `~/.config`.
 
 See [ansible/README.md](ansible/README.md) for what the role does. `ansible/roles/macos/manual/init_macos.sh` is the same setup as a plain shell script.

@@ -33,5 +33,5 @@
 
 - name: Install Python packages from requirements.txt
   ansible.builtin.pip:
-    requirements: "{{ ansible_facts.env.HOME }}/myconf/os-es/ansible/roles/macos/tasks/requirements_py.txt"
+    requirements: "{{ role_path }}/tasks/requirements_py.txt"
     executable: "{{ ansible_facts.env.HOME }}/virtualenv/venv/bin/pip"

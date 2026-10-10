@@ -8,26 +8,10 @@
     state: present
   # Neovim itself is installed by neovim.yml (GitHub release, not Homebrew).
 
-- name: Ensure target config and tool directories exist
-  ansible.builtin.file:
-    path: "{{ ansible_facts.env.HOME }}/{{ item }}"
-    state: directory
-    mode: '0755'
-  loop:
-    - myconf/config
-
-- name: Create symlinks for dotfiles
-  ansible.builtin.file:
-    src: "{{ ansible_facts.env.HOME }}/{{ item.src }}"
-    dest: "{{ ansible_facts.env.HOME }}/{{ item.dest }}"
-    state: link
-    force: yes
-  loop:
-    - { src: 'myconf/ssh', dest: '.ssh' }
-    - { src: 'myconf/config', dest: '.config' }
-    - { src: 'myconf/os-es/etc/tigrc', dest: '.tigrc' }
-    - { src: 'myconf/os-es/etc/fd', dest: 'myconf/config/fd' }
-    - { src: 'myconf/os-es/etc/pylintrc', dest: 'myconf/config/pylintrc' }
+- name: Link shared CLI configs (tig, fd, pylint, git)
+  ansible.builtin.command: "{{ playbook_dir }}/../install.sh"
+  register: etc_install
+  changed_when: "'linked' in etc_install.stdout"
 
 - name: Touch files
   ansible.builtin.file:
@@ -38,11 +22,3 @@
     - ".vimrc-env.vim"
     - ".vimrc-local.vim"
     - ".global.env"
-
-- name: Copy files
-  ansible.builtin.copy:
-    src: "{{ ansible_facts.env.HOME }}/{{ item.src }}"
-    dest: "{{ ansible_facts.env.HOME }}/{{ item.dest }}"
-    mode: '0644'
-  loop:
-    - { src: 'myconf/os-es/etc/git/gitconfig-init.ini', dest: '.gitconfig' }

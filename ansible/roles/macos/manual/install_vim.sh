@@ -88,7 +88,7 @@ install_vim_rpi(){
     #sudo chown -R ubuntu $HOME/.vim >> $HOME/.init/log_vim.txt 1>&2
 
     echo "-----[   Link VIMRC   ]-----"
-    ln -sf $HOME/myconf/os-es/ansible/roles/ubuntu/manual/vimrc-mini.vim $HOME/.vimrc
+    ln -sf $HOME/.dotfiles/os-es/ansible/roles/ubuntu/manual/vimrc-mini.vim $HOME/.vimrc
 }
 
 install_vim_mac(){
