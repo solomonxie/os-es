@@ -68,7 +68,7 @@ curl -L -o ~/Library/Fonts/DroidSansMNerdFont-Regular.otf \
 # > "Save Settings to Folder Now" the other direction, to seed it initially)
 
 # tasks/repos.yml: public config repos, each linking itself into place
-for repo in svimmer coastal-shells tmuxedo learning-machine; do
+for repo in svimmer coastal-shells tmuxedo llm-collections; do
   [ -d ~/myconf/$repo ] || git clone https://github.com/solomonxie/$repo.git ~/myconf/$repo
   ~/myconf/$repo/install.sh
 done

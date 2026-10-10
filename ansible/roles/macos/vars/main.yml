@@ -48,4 +48,4 @@ config_repos:
   - svimmer
   - coastal-shells
   - tmuxedo
-  - learning-machine
+  - llm-collections
