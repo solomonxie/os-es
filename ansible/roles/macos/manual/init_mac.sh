@@ -23,14 +23,14 @@ ls ~/.ssh/id_rsa || ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa
 # Dotfiles
 mkdir -p ~/myconf
 ls ~/myconf/dotfiles || git clone git@github.com:solomonxie/dotfiles.git ~/myconf/dotfiles
-ln -sf ~/myconf/dotfiles/zsh/zshrc-mac.sh ~/.zshrc
+ln -sf ~/.config/zsh/zshrc-mac.sh ~/.zshrc
 ln -sf ~/myconf/dotfiles/vim ~/.config/nvim
 ln -sf ~/myconf/dotfiles/vim ~/.vim
-ln -sf ~/myconf/dotfiles/tmux/tmux.conf ~/.tmux.conf
-ln -sf ~/myconf/dotfiles/etc/tigrc ~/.tigrc
+ln -sf ~/.config/tmux/tmux.conf ~/.tmux.conf
+ln -sf ~/myconf/os-es/etc/tigrc ~/.tigrc
 
 # Git
-ls ~/.gitconfig || cp ~/myconf/dotfiles/etc/git/gitconfig-local.ini ~/.gitconfig
+ls ~/.gitconfig || cp ~/.config/git/gitconfig-local.ini ~/.gitconfig
 read -p "Enter github user display name: " git_name
 read -p "Enter github email: " git_email
 git config --global user.name "$git_name"

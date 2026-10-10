@@ -1,0 +1,5 @@
+.*
+!.gitignore
+*.pyc
+envfile-local
+Makefile-local

@@ -30,9 +30,9 @@ install-mac:
 		brew install ansible; \
 	fi; \
 	mkdir -p "$(HOME)/myconf"; \
-	if [ "$(DOTFILES)" != "$(HOME)/myconf/dotfiles" ] && [ ! -e "$(HOME)/myconf/dotfiles" ]; then \
-		echo "==> Linking $(DOTFILES) to $(HOME)/myconf/dotfiles..."; \
-		ln -s "$(DOTFILES)" "$(HOME)/myconf/dotfiles"; \
+	if [ "$(DOTFILES)" != "$(HOME)/myconf/os-es" ] && [ ! -e "$(HOME)/myconf/os-es" ]; then \
+		echo "==> Linking $(DOTFILES) to $(HOME)/myconf/os-es..."; \
+		ln -s "$(DOTFILES)" "$(HOME)/myconf/os-es"; \
 	fi; \
 	if [ -d "$(HOME)/.ssh" ] && [ ! -L "$(HOME)/.ssh" ]; then \
 		echo "==> Migrating existing ~/.ssh to ~/myconf/ssh..."; \

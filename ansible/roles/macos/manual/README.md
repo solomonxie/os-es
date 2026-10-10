@@ -39,7 +39,7 @@ TBD
 
 Alfred workflow: Hotkey -> Run Script:
 ```
-/bin/bash -c $HOME/myconf/dotfiles/etc/macos/remap_external_keyboard_60keys.sh  |tee /tmp/keymap.txt
+/bin/bash -c $HOME/myconf/os-es/etc/macos/remap_external_keyboard_60keys.sh  |tee /tmp/keymap.txt
 ```
 
 The script:

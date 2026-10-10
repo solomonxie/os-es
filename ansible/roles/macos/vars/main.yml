@@ -43,21 +43,9 @@ neovim_version: "0.11.2"
 neovim_arch: "{{ 'arm64' if ansible_facts.architecture == 'arm64' else 'x86_64' }}"
 
 
-# Agent skills replicated across LLM tools (Claude, Codex, Antigravity)
-llm_skills:
-  - ansible
-  - aws
-  - chrome-extension
-  - git
-  - leetcode-pattern-template
-  - progressive-learning
-  - project-planning
-  - push-commit
-  - python
-  - readme
-  - security
-  - shell
-  - terraform
-  - tmux
-  - uiux
-  - walk-through-repo
+# Public config repos cloned into ~/myconf/<name>; each one's install.sh symlinks it into place.
+config_repos:
+  - svimmer
+  - coastal-shells
+  - tmuxedo
+  - learning-machine

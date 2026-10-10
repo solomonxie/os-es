@@ -23,13 +23,12 @@
     state: link
     force: yes
   loop:
-    # - { src: 'myconf/dotfiles/vim', dest: '.config/nvim' }
-    - { src: 'myconf/dotfiles/zsh/zshrc-mac.zsh', dest: '.zshrc' }
-    - { src: 'myconf/dotfiles/tmux/tmux.conf', dest: '.tmux.conf' }
     - { src: 'myconf/ssh', dest: '.ssh' }
     - { src: 'myconf/config', dest: '.config' }
-    - { src: 'myconf/dotfiles/etc/tigrc', dest: '.tigrc' }
-    - { src: 'myconf/dotfiles/etc/fd', dest: 'myconf/config/fd' }
+    - { src: 'myconf/os-es/etc/tigrc', dest: '.tigrc' }
+    - { src: 'myconf/os-es/etc/fd', dest: 'myconf/config/fd' }
+    - { src: 'myconf/os-es/etc/git', dest: 'myconf/config/git' }
+    - { src: 'myconf/os-es/etc/pylintrc', dest: 'myconf/config/pylintrc' }
 
 - name: Touch files
   ansible.builtin.file:
@@ -47,4 +46,4 @@
     dest: "{{ ansible_facts.env.HOME }}/{{ item.dest }}"
     mode: '0644'
   loop:
-    - { src: 'myconf/dotfiles/etc/git/gitconfig-init.ini', dest: '.gitconfig' }
+    - { src: 'myconf/os-es/etc/git/gitconfig-init.ini', dest: '.gitconfig' }

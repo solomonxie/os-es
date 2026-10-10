@@ -38,13 +38,16 @@
 - name: Run Programming Languages setup (Python, nodejs...)
   ansible.builtin.include_tasks: languages.yml
 
-- name: Run Neovim release install
-  ansible.builtin.include_tasks: neovim.yml
-
 - name: Run Vim, Zsh, and Tmux setup
   ansible.builtin.include_tasks: shell_tools.yml
 
-- name: Run LLM tools setup (Claude, Codex, Antigravity, Ollama)
+- name: Clone and install the public config repos
+  ansible.builtin.include_tasks: repos.yml
+
+- name: Run Neovim release install
+  ansible.builtin.include_tasks: neovim.yml
+
+- name: Run LLM tools setup (Ollama)
   ansible.builtin.include_tasks: llm.yml
 
 - name: Run iTerm2 profile setup

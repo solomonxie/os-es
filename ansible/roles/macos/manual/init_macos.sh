@@ -48,45 +48,30 @@ xattr -r -d com.apple.quarantine ~/nvim-macos-$NVIM_VERSION
 
 # tasks/shell_tools.yml: shell packages + dotfile symlinks
 brew install zsh tmux
-ln -sf ~/myconf/dotfiles/zsh/zshrc-mac.zsh ~/.zshrc
-ln -sf ~/myconf/dotfiles/tmux/tmux.conf ~/.tmux.conf
 ln -sf ~/myconf/ssh ~/.ssh
 ln -sf ~/myconf/config ~/.config
-ln -sf ~/myconf/dotfiles/etc/tigrc ~/.tigrc
-ln -sf ~/myconf/dotfiles/etc/fd ~/myconf/config/fd
+ln -sf ~/myconf/os-es/etc/tigrc ~/.tigrc
+ln -sf ~/myconf/os-es/etc/fd ~/myconf/config/fd
+ln -sf ~/myconf/os-es/etc/git ~/myconf/config/git
+ln -sf ~/myconf/os-es/etc/pylintrc ~/myconf/config/pylintrc
 
 
 touch ~/.vimrc-env.vim ~/.vimrc-local.vim ~/.global.env
-cp ~/myconf/dotfiles/etc/git/gitconfig-init.ini ~/.gitconfig
+cp ~/myconf/os-es/etc/git/gitconfig-init.ini ~/.gitconfig
 
 # tasks/iterm2.yml: live-sync prefs folder + font
-defaults write com.googlecode.iterm2 PrefsCustomFolder -string ~/myconf/dotfiles/ansible/roles/macos/iterm2/prefs
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string ~/myconf/os-es/ansible/roles/macos/iterm2/prefs
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 curl -L -o ~/Library/Fonts/DroidSansMNerdFont-Regular.otf \
   https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/DroidSansMono/DroidSansMNerdFont-Regular.otf
 # then relaunch iTerm2 once to pull in the tracked prefs (or General > Preferences
 # > "Save Settings to Folder Now" the other direction, to seed it initially)
 
-# tasks/llm.yml: Ollama + LLM tool configs and skills
-brew install ollama
-mkdir -p ~/.claude ~/.codex/skills ~/.gemini/skills ~/.gemini/config ~/.antigravity
-ln -sf ~/myconf/dotfiles/llm/claude ~/myconf/config/claude
-ln -sf ~/myconf/dotfiles/llm/claude/CLAUDE.md ~/.claude/CLAUDE.md
-ln -sf ~/myconf/dotfiles/llm/claude/settings.json ~/.claude/settings.json
-ln -sf ~/myconf/dotfiles/llm/claude/skills ~/.claude/skills
-ln -sfn ~/myconf/dotfiles/llm/claude/hooks ~/.claude/hooks
-ln -sf ~/myconf/dotfiles/llm/openai ~/myconf/config/openai
-ln -sf ~/myconf/dotfiles/llm/openai/AGENTS.md ~/.codex/AGENTS.md
-ln -sf ~/myconf/dotfiles/llm/antigravity ~/myconf/config/antigravity
-ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.gemini/GEMINI.md
-ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.gemini/config/GEMINI.md
-ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.gemini/AGENTS.md
-ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.antigravity/GEMINI.md
-ln -sf ~/myconf/dotfiles/llm/antigravity/GEMINI.md ~/.antigravity/AGENTS.md
-
-for skill in ansible aws chrome-extension git leetcode-pattern-template \
-  progressive-learning project-planning push-commit python readme security \
-  shell terraform tmux uiux walk-through-repo; do
-  ln -sf ~/myconf/dotfiles/llm/claude/skills/$skill ~/.codex/skills/$skill
-  ln -sf ~/myconf/dotfiles/llm/claude/skills/$skill ~/.gemini/skills/$skill
+# tasks/repos.yml: public config repos, each linking itself into place
+for repo in svimmer coastal-shells tmuxedo learning-machine; do
+  [ -d ~/myconf/$repo ] || git clone https://github.com/solomonxie/$repo.git ~/myconf/$repo
+  ~/myconf/$repo/install.sh
 done
+
+# tasks/llm.yml
+brew install ollama

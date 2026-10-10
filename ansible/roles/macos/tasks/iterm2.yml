@@ -4,7 +4,7 @@
     domain: com.googlecode.iterm2
     key: PrefsCustomFolder
     type: string
-    value: "{{ ansible_facts.env.HOME }}/myconf/dotfiles/ansible/roles/macos/iterm2/prefs"
+    value: "{{ ansible_facts.env.HOME }}/myconf/os-es/ansible/roles/macos/iterm2/prefs"
     state: present
 
 - name: Enable loading (and saving) preferences from that folder

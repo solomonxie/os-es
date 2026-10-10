@@ -1,0 +1,13 @@
+---
+- name: Clone config repos
+  ansible.builtin.git:
+    repo: "https://github.com/solomonxie/{{ item }}.git"
+    dest: "{{ ansible_facts.env.HOME }}/myconf/{{ item }}"
+    update: false
+  loop: "{{ config_repos }}"
+
+- name: Install config repos
+  ansible.builtin.command: "{{ ansible_facts.env.HOME }}/myconf/{{ item }}/install.sh"
+  loop: "{{ config_repos }}"
+  register: repo_install
+  changed_when: "'linked' in repo_install.stdout"

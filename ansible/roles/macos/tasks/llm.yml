@@ -3,46 +3,4 @@
   community.general.homebrew:
     name: ollama
     state: present
-
-- name: Ensure LLM tool directories exist
-  ansible.builtin.file:
-    path: "{{ ansible_facts.env.HOME }}/{{ item }}"
-    state: directory
-    mode: '0755'
-  loop:
-    - .claude
-    - .codex/skills
-    - .gemini/skills
-    - .gemini/config
-    - .antigravity
-
-# ~/.codex/config.toml is too sensitive for git: kept as a plain file outside this repo.
-- name: Link LLM tool configs
-  ansible.builtin.file:
-    src: "{{ ansible_facts.env.HOME }}/{{ item.src }}"
-    dest: "{{ ansible_facts.env.HOME }}/{{ item.dest }}"
-    state: link
-    force: yes
-  loop:
-    - { src: 'myconf/dotfiles/llm/claude', dest: 'myconf/config/claude' }
-    - { src: 'myconf/dotfiles/llm/claude/CLAUDE.md', dest: '.claude/CLAUDE.md' }
-    - { src: 'myconf/dotfiles/llm/claude/settings.json', dest: '.claude/settings.json' }
-    - { src: 'myconf/dotfiles/llm/claude/skills', dest: '.claude/skills' }
-    - { src: 'myconf/dotfiles/llm/claude/hooks', dest: '.claude/hooks' }
-    - { src: 'myconf/dotfiles/llm/openai', dest: 'myconf/config/openai' }
-    - { src: 'myconf/dotfiles/llm/openai/AGENTS.md', dest: '.codex/AGENTS.md' }
-    - { src: 'myconf/dotfiles/llm/antigravity', dest: 'myconf/config/antigravity' }
-    - { src: 'myconf/dotfiles/llm/antigravity/settings.json', dest: '.gemini/settings.json' }
-    - { src: 'myconf/dotfiles/llm/antigravity/GEMINI.md', dest: '.gemini/GEMINI.md' }
-    - { src: 'myconf/dotfiles/llm/antigravity/GEMINI.md', dest: '.gemini/config/GEMINI.md' }
-    - { src: 'myconf/dotfiles/llm/antigravity/GEMINI.md', dest: '.gemini/AGENTS.md' }
-    - { src: 'myconf/dotfiles/llm/antigravity/GEMINI.md', dest: '.antigravity/GEMINI.md' }
-    - { src: 'myconf/dotfiles/llm/antigravity/GEMINI.md', dest: '.antigravity/AGENTS.md' }
-
-- name: Link user skills into Codex and Antigravity without replacing system-managed skills
-  ansible.builtin.file:
-    src: "{{ ansible_facts.env.HOME }}/myconf/dotfiles/llm/claude/skills/{{ item.1 }}"
-    dest: "{{ ansible_facts.env.HOME }}/{{ item.0 }}/{{ item.1 }}"
-    state: link
-    force: yes
-  loop: "{{ ['.codex/skills', '.gemini/skills'] | product(llm_skills) | list }}"
+# Claude, Codex and Gemini configs come from the learning-machine repo (see repos.yml).
