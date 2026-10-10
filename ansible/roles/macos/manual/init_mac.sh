@@ -30,7 +30,7 @@ ln -sf ~/.config/tmux/tmux.conf ~/.tmux.conf
 ln -sf ~/myconf/os-es/etc/tigrc ~/.tigrc
 
 # Git
-ls ~/.gitconfig || cp ~/.config/git/gitconfig-local.ini ~/.gitconfig
+ls ~/.gitconfig || cp ~/myconf/os-es/etc/git/gitconfig-local.ini ~/.gitconfig
 read -p "Enter github user display name: " git_name
 read -p "Enter github email: " git_email
 git config --global user.name "$git_name"

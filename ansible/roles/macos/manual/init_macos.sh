@@ -52,7 +52,6 @@ ln -sf ~/myconf/ssh ~/.ssh
 ln -sf ~/myconf/config ~/.config
 ln -sf ~/myconf/os-es/etc/tigrc ~/.tigrc
 ln -sf ~/myconf/os-es/etc/fd ~/myconf/config/fd
-ln -sf ~/myconf/os-es/etc/git ~/myconf/config/git
 ln -sf ~/myconf/os-es/etc/pylintrc ~/myconf/config/pylintrc
 
 
