@@ -21,8 +21,8 @@ ls ~/.ssh/id_rsa || ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa
 
 
 # Dotfiles
-for pair in os-es:os-es svimmer:nvim coastal-shells:zsh tmuxedo:tmux llm-collections:llm-collections; do
-  repo=${pair%%:*} dest=~/.config/${pair#*:}
+for pair in os-es:.config/os-es vim-for-speed:workspace/vim-for-speed shells-on-shells:workspace/shells-on-shells tmux-ing:workspace/tmux-ing llm-collections:.config/llm-collections; do
+  repo=${pair%%:*} dest=~/${pair#*:}
   [ -d $dest ] || git clone https://github.com/solomonxie/$repo.git $dest
   $dest/install.sh
 done

@@ -62,8 +62,8 @@ curl -L -o ~/Library/Fonts/DroidSansMNerdFont-Regular.otf \
 # > "Save Settings to Folder Now" the other direction, to seed it initially)
 
 # tasks/repos.yml: public config repos, each linking itself into place
-for pair in svimmer:nvim coastal-shells:zsh tmuxedo:tmux llm-collections:llm-collections; do
-  repo=${pair%%:*} dest=~/.config/${pair#*:}
+for pair in vim-for-speed:workspace/vim-for-speed shells-on-shells:workspace/shells-on-shells tmux-ing:workspace/tmux-ing llm-collections:.config/llm-collections; do
+  repo=${pair%%:*} dest=~/${pair#*:}
   [ -d $dest ] || git clone https://github.com/solomonxie/$repo.git $dest
   $dest/install.sh
 done

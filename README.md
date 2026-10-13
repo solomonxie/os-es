@@ -2,7 +2,7 @@
 
 Machine setup for macOS, Ubuntu, Alpine and Raspberry Pi, plus shared CLI configs (git, tig, fd, pylint).
 
-- **macOS:** an Ansible role installs Homebrew packages, Neovim, language runtimes and iTerm2 prefs, then clones and installs [svimmer](https://github.com/solomonxie/svimmer), [coastal-shells](https://github.com/solomonxie/coastal-shells), [tmuxedo](https://github.com/solomonxie/tmuxedo) and [llm-collections](https://github.com/solomonxie/llm-collections).
+- **macOS:** an Ansible role installs Homebrew packages, Neovim, language runtimes and iTerm2 prefs, then clones and installs [vim-for-speed](https://github.com/solomonxie/vim-for-speed), [shells-on-shells](https://github.com/solomonxie/shells-on-shells), [tmux-ing](https://github.com/solomonxie/tmux-ing) and [llm-collections](https://github.com/solomonxie/llm-collections).
 - **Ubuntu, Alpine, Raspberry Pi:** reference scripts under `ansible/roles/<os>/manual/`.
 
 ## New Mac
