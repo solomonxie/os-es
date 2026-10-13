@@ -8,4 +8,5 @@ if ! xcode-select -p >/dev/null 2>&1; then
 fi
 mkdir -p ~/.config
 [ -d ~/.config/os-es ] || git clone https://github.com/solomonxie/os-es.git ~/.config/os-es
+~/.config/os-es/install-shell-tools.sh
 make -C ~/.config/os-es install-mac

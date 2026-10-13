@@ -41,11 +41,3 @@ homebrew_packages:
 # together when upgrading.
 neovim_version: "0.11.2"
 neovim_arch: "{{ 'arm64' if ansible_facts.architecture == 'arm64' else 'x86_64' }}"
-
-
-# Public config repos, cloned into dest; each install.sh links itself into ~/.config.
-config_repos:
-  - { name: vim-for-speed, dest: workspace/vim-for-speed }
-  - { name: shells-on-shells, dest: workspace/shells-on-shells }
-  - { name: tmux-ing, dest: workspace/tmux-ing }
-  - { name: llm-collections, dest: .config/llm-collections }

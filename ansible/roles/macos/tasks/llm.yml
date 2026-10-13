@@ -3,4 +3,3 @@
   community.general.homebrew:
     name: ollama
     state: present
-# Claude, Codex and Gemini configs come from the llm-collections repo (see repos.yml).

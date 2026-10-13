@@ -21,11 +21,8 @@ ls ~/.ssh/id_rsa || ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa
 
 
 # Dotfiles
-for pair in os-es:.config/os-es vim-for-speed:workspace/vim-for-speed shells-on-shells:workspace/shells-on-shells tmux-ing:workspace/tmux-ing llm-collections:.config/llm-collections; do
-  repo=${pair%%:*} dest=~/${pair#*:}
-  [ -d $dest ] || git clone https://github.com/solomonxie/$repo.git $dest
-  $dest/install.sh
-done
+[ -d ~/.config/os-es ] || git clone https://github.com/solomonxie/os-es.git ~/.config/os-es
+~/.config/os-es/install-shell-tools.sh
 
 # Git
 read -p "Enter github user display name: " git_name
